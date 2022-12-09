@@ -1,0 +1,19 @@
+{
+  "name": "wikipedia-diff-stream",
+  "version": "0.6.7",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "diff-match-patch": "^1.0.4",
+    "diff-match-patch-node": "^0.9.1",
+    "eventsource": "^1.0.7",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "wtf_wikipedia": "^8.5.1"
+  },
+  "bin": {
+    "wikipedia-diff-stream": "main.js"
+  },
+  "gitHead": "d6f4789442ac2e1dea7b1f39b87c6db3395fd815"
+}

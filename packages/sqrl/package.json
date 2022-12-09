@@ -1,0 +1,80 @@
+{
+  "name": "sqrl",
+  "version": "0.6.8",
+  "description": "SQRL (A Safe, Stateful Rules Language for Event Streams) - engine",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/twitter/sqrl/tree/master/packages/sqrl",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "author": {
+    "name": "Twitter, Inc.",
+    "url": "https://twitter.com/twitteross"
+  },
+  "keywords": [
+    "sqrl"
+  ],
+  "files": [
+    "lib"
+  ],
+  "browser": {
+    "./lib/node/LocalFilesystem.js": "./lib/browser/LocalFilesystem.js",
+    "./lib/node/JsExecutionContext.js": "./lib/browser/JsExecutionContext.js"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "clean": "rimraf lib && rimraf coverage",
+    "docs": "typedoc --out ../../website/public/reference --ignoreCompilerErrors --stripInternal --excludeExternals src/api/",
+    "format": "prettier --write \"{src,__tests__}/**/*.ts\"",
+    "generate-parser": "ts-node ./src/parser/generateParser.ts > ./src/parser/sqrl.ts && ../../scripts/clean-pegjs-ts src/parser/sqrl.ts",
+    "lint": "tslint --force --format verbose \"src/**/*.ts\"",
+    "build": "tsc --pretty",
+    "test": "jest",
+    "test:integration": "jest --config=jest.integration.config.js",
+    "coverage": "jest --coverage",
+    "watch": "npm run build -- --watch",
+    "watch:test": "npm run test -- --watch",
+    "watch:test:integration": "npm run test:integration -- --watch",
+    "codegen": "./scripts/generateParser"
+  },
+  "dependencies": {
+    "bigint-buffer": "^1.1.2",
+    "bluebird": "^3.7.2",
+    "double-ended-queue": "^2.1.0-0",
+    "eventemitter3": "^4.0.7",
+    "fast-stable-stringify": "^1.0.0",
+    "jsonschema": "^1.2.4",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.31",
+    "murmurhash3.js": "https://github.com/qix/murmurHash3.js/releases/download/3.0.0-qix-0/murmurhash3.js-3.0.0-qix-0.tgz",
+    "node-nice": "^0.0.1",
+    "prettier": "^2.1.2",
+    "sqrl-common": "^0.6.8"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "@types/jsonpath": "^0.2.0",
+    "@types/node": "^11.9.5",
+    "@types/pegjs": "^0.10.1",
+    "@types/prettier": "^1.18.2",
+    "coveralls": "^3.0.6",
+    "jest": "^26.6.3",
+    "jest-environment-node-debug": "^2.0.0",
+    "jest-extended": "^0.11.2",
+    "pegjs": "^0.10.0",
+    "rimraf": "^3.0.0",
+    "sqrl-test-utils": "^0.6.8",
+    "ts-jest": "^26.5.2",
+    "ts-node": "^8.3.0",
+    "ts-pegjs": "^0.2.6",
+    "tslint": "^5.19.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typedoc": "^0.20.28",
+    "typescript": "^3.9.7"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "gitHead": "d6f4789442ac2e1dea7b1f39b87c6db3395fd815"
+}
